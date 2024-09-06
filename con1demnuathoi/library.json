@@ -2,16 +2,14 @@
   "name": "PCF8574",
   "keywords": "I2C, PCF8574, PCF8574A, IO, shift, rotate, readButton, toggle, reverse",
   "description": "Arduino library for PCF8574 - 8 channel I2C IO expander, implements shift rotate.",
-  "authors":
-  [
+  "authors": [
     {
       "name": "Rob Tillaart",
       "email": "Rob.Tillaart@gmail.com",
       "maintainer": true
     }
   ],
-  "repository":
-  {
+  "repository": {
     "type": "git",
     "url": "https://github.com/RobTillaart/PCF8574.git"
   },
