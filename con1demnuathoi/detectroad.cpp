@@ -5,12 +5,11 @@
 #include "PCF8574.h"
 #define HIGH 0
 #define LOW 1
-//
 
-int sensora = 0;
-int sensorb = 0;
-int sensorc = 0;
-int sensord = 0;
+int sensorA = 0;
+int sensorB = 0;
+int sensorC = 0;
+int sensorD = 0;
 
 static uint32_t time_out_sensor_left = 0;
 static uint32_t time_out_sensor_right = 0;
@@ -46,22 +45,29 @@ void read_ir_sensor_maintask() {
 }
 
 bool api_road_left() {
-  if (sensora == 1 && sensorb == 1 && sensorc == 1 && sensord == 0) {
+  if (sensorA == 1 && sensorB == 1 && sensorC == 1 && sensorD == 0) {
     return true;
   }
   return false;
 }
 
 bool api_road_right() {
-  if (sensora == 0 && sensorb == 1 && sensorc == 1 && sensord == 1) {
+  if (sensorA == 0 && sensorB == 1 && sensorC == 1 && sensorD == 1) {
     return true;
   }
   return false;
 }
 
 bool api_road_cross() {
-  if (sensora == 1 && sensorb == 1 && sensorc == 1 && sensord == 1) {
+  if (sensorA == 1 && sensorB == 1 && sensorC == 1 && sensorD == 1) {
     return true;
   }
+  return false;
+}
+
+bool api_road_straight(){
+  if(sensorA == 0 && sensorB == 1 && sensorC == 1 && sensorD == 0){
+    return true;
+    }
   return false;
 }
