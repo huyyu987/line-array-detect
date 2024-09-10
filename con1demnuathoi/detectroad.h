@@ -6,5 +6,6 @@ void read_ir_sensor_maintask();
 bool api_road_cross();
 bool api_road_left();
 bool api_road_right();
+bool api_road_straight();
 
 #endif
