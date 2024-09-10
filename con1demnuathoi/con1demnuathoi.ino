@@ -59,14 +59,9 @@ void setup() {
 }
 
 void loop() {
-  sensor1 = pcf8574.read(0);
-  sensor2 = pcf8574.read(1);
-  sensor3 = pcf8574.read(2);
-  sensor4 = pcf8574.read(3);
-  /*call();
-  if (sensor1 == 1 && sensor2 == 1 && sensor3 == 1 && sensor4 == 1) all++;
-  if (all%2==0) dich(); 
-  */
+  readSensor();
+  //call();
+
   if (sensor1 != 0 || sensor2 != 0 || sensor3 != 0 || sensor4 != 0) {
     if (sensor1 == 0 && sensor2 == 1 && sensor3 == 1 && sensor4 == 0) error = 0;
     else if (sensor1 == 0 && sensor2 == 0 && sensor3 == 0 && sensor4 == 1) error += -100;
@@ -104,8 +99,14 @@ void call() {
   Serial.println(r);
   Serial.println(l);
 }
+/*====================== doc cam bien ================*/
+void readSensor(){
+  sensor1 = pcf8574.read(0);
+  sensor2 = pcf8574.read(1);
+  sensor3 = pcf8574.read(2);
+  sensor4 = pcf8574.read(3);
+}
 //====toc do chay cham vcl ======================================
-
 void setMotorSpeed(int leftSpeed, int rightSpeed) {
   if (leftSpeed >= 0 && rightSpeed >= 0) {
     Speed(leftSpeed, 0, rightSpeed, 0);
@@ -134,13 +135,6 @@ void Speed(int speed1, int speed2, int speed3, int speed4) {
   ledcWrite(A_IN2, speed2);
   ledcWrite(B_IN1, speed3);
   ledcWrite(B_IN2, speed4);
-}
-
-void dich(){
-  setMotorSpeed(200,200);
-  delay(300);
-  setMotorSpeed(0,0);
-  delay(10000);
 }
 // =================PID=========================
 int pid(float kp, float ki, float kd, double tim, int value) {
